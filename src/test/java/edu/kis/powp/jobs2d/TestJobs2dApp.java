@@ -50,6 +50,8 @@ public class TestJobs2dApp {
         application.addTest("Load secret command", new SelectLoadSecretCommandOptionListener());
 
         application.addTest("Run command", new SelectRunCurrentCommandOptionListener(DriverFeature.getDriverManager()));
+        
+        application.addTest("Display Command Counter", new SelectDisplayCommandCounterOptionListener());
 
     }
 

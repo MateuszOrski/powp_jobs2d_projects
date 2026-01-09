@@ -1,11 +1,11 @@
 package edu.kis.powp.jobs2d.command;
 
-import edu.kis.powp.jobs2d.Job2dDriver;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import edu.kis.powp.jobs2d.Job2dDriver;
 
 /**
  * An immutable implementation of ICompoundCommand that allows executing multiple commands in sequence.
@@ -15,6 +15,7 @@ import java.util.List;
 public class CompoundCommand implements ICompoundCommand {
 
     private final List<DriverCommand> commands;
+    private String name = "Compound Command";
 
     /**
      * Private constructor to ensure controlled creation of CompoundCommand instances.
@@ -161,5 +162,33 @@ public class CompoundCommand implements ICompoundCommand {
      */
     public static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * Returns the string representation of this compound command.
+     * 
+     * @return the name of the compound command
+     */
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    /**
+     * Gets the name of this compound command.
+     * 
+     * @return the name of the compound command
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of this compound command.
+     * 
+     * @param name the new name for the compound command
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }
