@@ -15,6 +15,8 @@ public interface DriverCommand {
      */
     public void execute(Job2dDriver driver);
 
+    DriverCommand copy();
+
     /**
      * Accepts a visitor for this command.
      * @param visitor the visitor to accept.
