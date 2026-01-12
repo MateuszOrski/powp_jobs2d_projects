@@ -8,7 +8,7 @@ import edu.kis.powp.jobs2d.command.ICompoundCommand;
 import edu.kis.powp.jobs2d.command.OperateToCommand;
 import edu.kis.powp.jobs2d.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.command.manager.CommandManager;
-import edu.kis.powp.jobs2d.command.visitor.CommandVisitor;
+import edu.kis.powp.jobs2d.visitor.CommandVisitor;
 
 
 public class CommandCounterVisitorTest {
@@ -31,7 +31,9 @@ public class CommandCounterVisitorTest {
         public void visit(ICompoundCommand command) {
             compoundCount++;
 
-            for (DriverCommand nestedCommand : command) {
+            java.util.Iterator<DriverCommand> iterator = command.iterator();
+            while (iterator.hasNext()) {
+                DriverCommand nestedCommand = iterator.next();
                 nestedCommand.accept(this);
             }
         }

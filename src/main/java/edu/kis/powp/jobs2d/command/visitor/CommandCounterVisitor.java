@@ -4,6 +4,8 @@ import edu.kis.powp.jobs2d.command.DriverCommand;
 import edu.kis.powp.jobs2d.command.ICompoundCommand;
 import edu.kis.powp.jobs2d.command.OperateToCommand;
 import edu.kis.powp.jobs2d.command.SetPositionCommand;
+import edu.kis.powp.jobs2d.visitor.CommandVisitor;
+import java.util.Iterator;
 
 public final class CommandCounterVisitor {
 
@@ -55,7 +57,9 @@ public final class CommandCounterVisitor {
         public void visit(ICompoundCommand command) {
             count++;
             compoundCount++;
-            for (DriverCommand nested : command) {
+            Iterator<DriverCommand> iterator = command.iterator();
+            while (iterator.hasNext()) {
+                DriverCommand nested = iterator.next();
                 nested.accept(this);
             }
         }
